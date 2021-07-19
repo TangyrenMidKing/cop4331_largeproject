@@ -5,6 +5,7 @@ export default function InitialProfile()
 {
     const api_path = 'https://kindling-lp.herokuapp.com/';
     const[message, setMessage] = useState('');
+    
     const[showDescribetion, setShowDescribetion] = useState(false);
     const[game_development, set_game_development] = useState(false);
     const[app_development, set_app_development] = useState(false);
@@ -89,7 +90,6 @@ export default function InitialProfile()
                 else
                 {
                     setMessage('');
-                    storage.storeToken(res);
                     var user = {email:token.email, is_group:token.is_group ,jwtToken:res.refreshed_token_str};
                     localStorage.setItem('user_data', JSON.stringify(user));
                     

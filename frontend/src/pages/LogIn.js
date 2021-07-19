@@ -15,7 +15,7 @@ function LogIn()
 
         var obj = {email_str:loginName.value,password_str:loginPassword.value};
         var js = JSON.stringify(obj);
-        var storage = require('../tokenStorage.js');
+        
 
         try
         {    
@@ -24,6 +24,9 @@ function LogIn()
 
             var res = JSON.parse(await response.text());
             
+            var user = {email:loginName.value, is_group:res.is_group_bool ,jwtToken:res.access_token_str};
+            var user_data = JSON.stringify(user);
+
             // ready state is 0, send user to email verification page.
             if( res.ready_status_int == 0)
             {
@@ -32,18 +35,15 @@ function LogIn()
             // ready state is 1, send user to complete his personal file.
             else if( res.ready_status_int == 1)
             {
-                storage.storeToken(res);
-                var user = {email:loginName.value, is_group:res.is_group_bool ,jwtToken:res.access_token_str};
-                localStorage.setItem('user_data', JSON.stringify(user));
+                localStorage.setItem('user_data', user_data);
                 
+                setMessage('');
                 window.location.href = '/signup/initial_profile';
             }
             // successfully logged in
             else if ( res.ready_status_int == 2)
             {
-                storage.storeToken(res);
-                var user = {email:loginName.value, is_group:res.is_group_bool ,jwtToken:res.access_token_str};
-                localStorage.setItem('user_data', JSON.stringify(user));
+                localStorage.setItem('user_data', user_data);
                 
                 setMessage('');
                 window.location.href = '/card';
