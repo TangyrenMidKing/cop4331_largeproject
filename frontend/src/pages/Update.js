@@ -21,7 +21,6 @@ export default function Update()
             fields['phone_str'] = update_phonenumber.value;
         if (update_description.value != '')
             fields['description_str'] = update_description.value;
-
         var obj = {email_str:token.email,update_fields_obj:fields,access_token_str:token.jwtToken};
         var js = JSON.stringify(obj);
 
@@ -37,7 +36,8 @@ export default function Update()
 
                 setMessage('Successfully update.');
                 token.jwtToken = res.refreshed_token_str;
-                localStorage.setItem('user_data', token);
+
+                localStorage.setItem('user_data', JSON.stringify(token));
                 window.location.href = '/card';
             }
             else
@@ -61,8 +61,8 @@ export default function Update()
             <span>Description</span><br/>
             <input type="text" id="update_description" placeholder='description' ref={(c) => update_description = c}></input><br/>
             <span>{message}</span>
-            <button class='bnt' id='update_bnt' onClick={doUpdate}>Update</button><br/>
-            <button class='bnt' id='logout_bnt' onClick={doLogout}>Log Out</button><br/>
+            <button className='bnt' id='update_bnt' onClick={doUpdate}>Update</button><br/>
+            <button className='bnt' id='logout_bnt' onClick={doLogout}>Log Out</button><br/>
         </div>
     );
 }

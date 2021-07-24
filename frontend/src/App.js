@@ -12,6 +12,7 @@ import Update from './pages/Update';
 import EmailVerification from './pages/EmailVerification';
 import InitialProfile from './pages/InitialProfile';
 
+
 function App() {
 
   return (

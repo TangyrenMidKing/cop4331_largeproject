@@ -77,20 +77,20 @@ function ResetPassword()
     return (
         <div id='reset_password_div'>
             { showSendEmail ?
-            <div class='email_verification'>
+            <div className='email_verification'>
                 <h1>Email Verification</h1>
-                <input type='email' class='reset_input' ref={(c) => email = c} placeholder='email'></input><br/>
+                <input type='email' className='reset_input' ref={(c) => email = c} placeholder='email'></input><br/>
                 <h2>{message}</h2><br/><br/><br/>
-                <button class='btn' id='reset_email_verify_btn' onClick={sendResetEmail}>Send Rest Email</button>
+                <button className='btn' id='reset_email_verify_btn' onClick={sendResetEmail}>Send Rest Email</button>
             </div>
             :
             <div class='reset_password'>
                 <h1>Reset Password</h1><br/>
-                <input type='text' class='verification_code' ref={(c) => code = c} placeholder='code'></input><br/>
-                <input type="password" class="newpassword" id='newpassword' placeholder='new password' ref={(c) => newpassword = c}></input><br/>
-                <input type="password" class="newpassword" id='newpassword_confirm' placeholder='confirm password' ref={(c) => newpassword_confirm = c}></input><br/>
+                <input type='text' className='verification_code' ref={(c) => code = c} placeholder='code'></input><br/>
+                <input type="password" className="newpassword" id='newpassword' placeholder='new password' ref={(c) => newpassword = c}></input><br/>
+                <input type="password" className="newpassword" id='newpassword_confirm' placeholder='confirm password' ref={(c) => newpassword_confirm = c}></input><br/>
                 <span>{message}</span><br/><br/><br/>
-                <button class='bnt' id='reset_password_bnt' onClick={verifyCode}>Reset Password</button><br/>
+                <button className='bnt' id='reset_password_bnt' onClick={verifyCode}>Reset Password</button><br/>
             </div>
             }
         </div>

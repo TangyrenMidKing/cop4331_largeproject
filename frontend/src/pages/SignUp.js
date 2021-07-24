@@ -66,7 +66,7 @@ function SignUp()
                 className='switch_btn'
             /><br/>
             <span>{message}</span><br/>
-            <button class='bnt' id='signup_bnt' onClick={doSignup}>Sign Up</button><br/>
+            <button className='bnt' id='signup_bnt' onClick={doSignup}>Sign Up</button><br/>
         </div>
     );
 }

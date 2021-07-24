@@ -64,19 +64,19 @@ function EmailVerification()
     }
 
     return(
-        <div class='email_verification'>
+        <div className='email_verification'>
         {showSend ? 
             <div class='sendEmail'>
                 <h1>Email Verification</h1>
-                <input type='email' class='email_verify_input' ref={(c) => email = c} placeholder='email'></input><br/>
-                <button class='btn' id='email_verify_btn' onClick={sendEmail}>Send Email</button>
+                <input type='email' className='email_verify_input' ref={(c) => email = c} placeholder='email'></input><br/>
+                <button className='btn' id='email_verify_btn' onClick={sendEmail}>Send Email</button>
                 <h2>{message}</h2>
             </div>
             :
             <div class='code_verification'>
                 <h1>Code Verification</h1>
-                <input type='text' class='verification_code' ref={(c) => code = c} placeholder='code'></input><br/>
-                <button class='btn' id='code_verify_btn' onClick={verifyCode}>Verify Code</button>
+                <input type='text' className='verification_code' ref={(c) => code = c} placeholder='code'></input><br/>
+                <button className='btn' id='code_verify_btn' onClick={verifyCode}>Verify Code</button>
                 <h2>{message}</h2>
             </div>
         }
