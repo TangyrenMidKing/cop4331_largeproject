@@ -7,3 +7,5 @@ $npm install
 $npm install react-router-dom
 
 $npm i react-tinder-card
+
+$npm install react-switch
