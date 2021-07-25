@@ -54,8 +54,6 @@ export default function Card()
 
     const swipe_left = () => 
     {
-        
-//console.log(count + ": " + target);
         token = JSON.parse(localStorage.getItem('user_data'));
         obj = {email_str:token.email,is_group_bool:token.is_group,target_email_str:target,access_token_str:token.jwtToken};
         js = JSON.stringify(obj);
@@ -69,7 +67,6 @@ export default function Card()
             if (res.success_bool === false)  return;
             var user = {email:token.email,is_group:token.is_group,jwtToken:res.refreshed_token_str};
             localStorage.setItem('user_data',JSON.stringify(user));
-//console.log(res);
             get_candidate();
         });
     }
@@ -110,7 +107,7 @@ export default function Card()
             return res.json();
         })
         .then( res => {
-//console.log("get_candidate: " + JSON.stringify(res));
+
             var user = {email:token.email,is_group:token.is_group,jwtToken:res.refreshed_token_str};
             localStorage.setItem('user_data',JSON.stringify(user));
             setTarget(res.email_str);
@@ -144,16 +141,16 @@ export default function Card()
                 <img className="header_icon" onClick={gotoMatchList} src='https://cdn.discordapp.com/attachments/856542176195510302/860972611219619840/menu.png'/>
             </div>
              {/** onSwipe not work, need fix it */}
-            <TinderCard className='swipe_card'
+            {/* <TinderCard className='swipe_card' 
             onSwipe={onSwipe}
-            preventSwipe={['right', 'left']}>
+            preventSwipe={['up', 'down']}>*/}
             {person && <div className="card">
                 <h1>{person.name}</h1>
                 <h2>{person.phone}</h2>
                 <h2>{person.email}</h2>
                 <span>{person.description}</span><br/><br/>
             </div>}
-            </TinderCard>
+            {/* </TinderCard> */}
             <h1>{message}</h1><br/><br/>
             <div className='btn' >
                 <button className='swipe_left' onClick={swipe_left} >No</button>
