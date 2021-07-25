@@ -8,7 +8,7 @@ export default function Match()
     const [match_list, setList] = useState(null);
     var obj = {email_str:token.email,output_select_str:'e',access_token_str:token.jwtToken};
     var js = JSON.stringify(obj);
-console.log(JSON.stringify(token));
+
     useEffect(() => 
     {
         fetch(api_path + 'api/get_matches',
@@ -20,7 +20,7 @@ console.log(JSON.stringify(token));
             var user = {email:token.email, is_group:token.is_group ,jwtToken:res.refreshed_token_str};
             var user_data = JSON.stringify(user);
             localStorage.setItem('user_data', user_data);
-            console.log(JSON.stringify(res.matches_array));
+
             setList(res.matches_array);
         });
     },[]);

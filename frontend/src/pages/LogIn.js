@@ -65,8 +65,8 @@ function LogIn()
         <div id='container'>
             <div class='bar'>
                 <h1>Log In</h1><br/>
-                <input type="email" name="username" placeholder='email\username' ref={(c) => loginName = c}></input><br/>
-                <input type="password" name="password" placeholder='password' ref={(c) => loginPassword = c}></input><br/>
+                <input type="email" name="username" placeholder='email\username' value='dings@mail.broward.edu' ref={(c) => loginName = c}></input><br/>
+                <input type="password" name="password" placeholder='password' value="1029433728" ref={(c) => loginPassword = c}></input><br/>
                 <button className='btn' id='login_page_bnt' onClick={doLogin}>Log In</button><br/>
                 <Link to={'/reset_password'} >forget passwrod?</Link><br/>
                 <h2 id="loginResult">{message}</h2>
