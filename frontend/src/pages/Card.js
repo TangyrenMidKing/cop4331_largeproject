@@ -7,6 +7,11 @@ export default function Card()
     const [target,setTarget] = useState('');
     const [person,setPerson] = useState(null);
     const [message, setMessage] = useState('');
+    var card_loop = [];
+    for (let i = 0; i < 1000; i++) {
+        card_loop.push({id:i});
+    }
+    
 
     // get token and form the json request.
     var token = JSON.parse(localStorage.getItem('user_data'));
@@ -63,7 +68,6 @@ export default function Card()
             return res.json();
         })
         .then( res => {
-
             if (res.success_bool === false)  return;
             var user = {email:token.email,is_group:token.is_group,jwtToken:res.refreshed_token_str};
             localStorage.setItem('user_data',JSON.stringify(user));
@@ -140,17 +144,22 @@ export default function Card()
                 <img className="header_logo" src='https://media.discordapp.net/attachments/860932549257330738/860942532820992060/flame.png'/>
                 <img className="header_icon" onClick={gotoMatchList} src='https://cdn.discordapp.com/attachments/856542176195510302/860972611219619840/menu.png'/>
             </div>
-             {/** onSwipe not work, need fix it */}
-            {/* <TinderCard className='swipe_card' 
-            onSwipe={onSwipe}
-            preventSwipe={['up', 'down']}>*/}
-            {person && <div className="card">
-                <h1>{person.name}</h1>
-                <h2>{person.phone}</h2>
-                <h2>{person.email}</h2>
-                <span>{person.description}</span><br/><br/>
-            </div>}
-            {/* </TinderCard> */}
+            <div className='cardContainer'>
+                {card_loop.map((card) => 
+                person && <TinderCard className='swipe_card' 
+                key ={card.id}
+                flickOnSwipe='false'
+                onSwipe={(dir) => onSwipe(dir)}
+                preventSwipe={['up', 'down']}>
+                <div className="card">
+                    <h1>{person.name}</h1>
+                    <h2>{person.phone}</h2>
+                    <h2>{person.email}</h2>
+                    <span>{person.description}</span><br/><br/>
+                </div>
+                </TinderCard>)}
+            </div>
+
             <h1>{message}</h1><br/><br/>
             <div className='btn' >
                 <button className='swipe_left' onClick={swipe_left} >No</button>
